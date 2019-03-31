@@ -4,8 +4,8 @@ import './Navigation.css';
 const Navigation = () => {
     return (
         <nav>
-            <p className='signin'>Sign in</p>
-            <p>Sign up</p>
+            <p className='signin'>Login</p>
+            <p className='pointer'>Sign up</p>
         </nav>
     );
 }
