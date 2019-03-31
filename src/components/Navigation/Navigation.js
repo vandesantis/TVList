@@ -4,7 +4,8 @@ import './Navigation.css';
 const Navigation = () => {
     return (
         <nav>
-            <p class='signin'>Sign in</p>
+            <p className='signin'>Sign in</p>
+            <p>Sign up</p>
         </nav>
     );
 }
