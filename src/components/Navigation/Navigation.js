@@ -1,11 +1,11 @@
 import React from 'react';
 import './Navigation.css';
 
-const Navigation = () => {
+const Navigation = ({ changeRoute }) => {
     return (
         <nav>
-            <p className='signin'>Login</p>
-            <p className='pointer'>Sign up</p>
+            <p onClick={() => changeRoute('login')} className='login dim'>Login</p>
+            <p onClick={() => changeRoute('signup')} className='pointer dim'>Sign up</p>
         </nav>
     );
 }
