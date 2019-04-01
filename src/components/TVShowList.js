@@ -1,5 +1,5 @@
 import React from 'react';
-import TVShow from './TVShow';
+import TVShowEntry from './TVShowEntry/TVShowEntry';
 
 const exampleData = {
     data: [
@@ -20,14 +20,14 @@ const exampleData = {
     ]
 }
 
-const TVShowList = () => {
+class TVShowList extends React.Component {
     // constructor() {
     //     super();
     // }
-
-    const tvShowArray = exampleData.data.map((tvShow, i) => {
+    tvShowArray = exampleData.data.map((tvShow, i) => {
         return (
-            <TVShow title={tvShow.title}
+            <TVShowEntry changeRoute={this.props.changeRoute}
+                title={tvShow.title}
                 genre={tvShow.genre}
                 rating={tvShow.rating}
                 synopsis={tvShow.synopsis}
@@ -35,11 +35,13 @@ const TVShowList = () => {
         )
     });
 
-    return (
-        <div>
-            { tvShowArray }
-        </div>
-    );
+    render() {
+        return (
+            <div>
+                { this.tvShowArray }
+            </div>
+        );
+    }
 }
 
 export default TVShowList;
