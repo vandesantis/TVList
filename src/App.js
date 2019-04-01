@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Home from './components/Home';
 import './App.css';
 
 class App extends Component {
@@ -23,8 +24,8 @@ class App extends Component {
     else if (this.state.route === 'signup') {
       return <Signup changeRoute = {this.changeRoute}/>
     }
-    else {
-      return <h1>TV Show List</h1>
+    else if (this.state.route === 'home') {
+      return <Home />
     }
   }
 
