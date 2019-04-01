@@ -1,8 +1,25 @@
-nav {
+.container {
+    display: flex;
+    justify-content: flex-end;
+    /* flex-wrap: nowrap; */
+}
+
+.end {
     display: flex;
     justify-content: flex-end;
     padding-right: 3em;
 }
+
+.start {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 3em;
+}
+
+/* .logo {
+    padding-left: 3em;
+} */
 
 .login {
     cursor: pointer;
