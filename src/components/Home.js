@@ -10,7 +10,7 @@ class Home extends React.Component {
         let { changeRoute } = this.props;
         return (
             <div>
-                <h1>TV Show List</h1>
+                {/* <h1>TV Show List</h1> */}
                 <TVShowList changeRoute = {changeRoute}/>
             </div>
         );

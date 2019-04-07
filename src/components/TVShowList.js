@@ -37,9 +37,9 @@ class TVShowList extends React.Component {
 
     render() {
         return (
-            <div>
+            <table>
                 { this.tvShowArray }
-            </div>
+            </table>
         );
     }
 }
