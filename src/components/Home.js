@@ -1,5 +1,5 @@
 import React from 'react';
-import TVShowList from './TVShowList';
+import TVShowList from './TVShowList/TVShowList';
 
 class Home extends React.Component {
     // constructor() {
@@ -7,11 +7,11 @@ class Home extends React.Component {
     // }
 
     render() {
-        let { changeRoute } = this.props;
+        let { openShowPage } = this.props;
         return (
             <div>
                 {/* <h1>TV Show List</h1> */}
-                <TVShowList changeRoute = {changeRoute}/>
+                <TVShowList openShowPage = {openShowPage}/>
             </div>
         );
       }

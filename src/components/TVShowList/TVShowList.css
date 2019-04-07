@@ -1,0 +1,12 @@
+.table-header {
+    background-color: #99ccff;
+}
+
+table {
+    width: 100%;
+}
+
+/* tr {
+    display: flex;
+    justify-content: center;
+} */

@@ -1,8 +1,16 @@
-.container {
-    display: flex;
-    justify-content: start;
+.home-list {
+    /* display: flex;
+    justify-content: flex-start; */
+}
+
+.title {
+    color: blue;
+    cursor: pointer;
+    display: inline;
+    margin: 5px;
 }
 
 td {
     padding: 1em;
+    outline: 1px solid black;
 }

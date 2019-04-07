@@ -1,5 +1,6 @@
 import React from 'react';
-import TVShowEntry from './TVShowEntry/TVShowEntry';
+import TVShowEntry from '../TVShowEntry/TVShowEntry';
+import './TVShowList.css';
 
 const exampleData = {
     data: [
@@ -26,7 +27,7 @@ class TVShowList extends React.Component {
     // }
     tvShowArray = exampleData.data.map((tvShow, i) => {
         return (
-            <TVShowEntry changeRoute={this.props.changeRoute}
+            <TVShowEntry openShowPage={this.props.openShowPage}
                 title={tvShow.title}
                 genre={tvShow.genre}
                 rating={tvShow.rating}
@@ -38,6 +39,11 @@ class TVShowList extends React.Component {
     render() {
         return (
             <table>
+                <tr class='table-header'>
+                    <td>Title</td>
+                    <td>Genre</td>
+                    <td>Rating</td>
+                </tr>
                 { this.tvShowArray }
             </table>
         );

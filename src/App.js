@@ -10,7 +10,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: 'home'
+      route: 'home',
+      synopsis: '',
+      rating: '',
+      genre: '',
+      fcc: ''
     }
   }
 
@@ -18,23 +22,35 @@ class App extends Component {
     this.setState({ route: route });
   }
 
+  openShowPage  = (route, genre, rating, synopsis, fcc) => {
+    this.setState({ route: route, synopsis: synopsis, rating: rating, genre: genre, fcc: fcc});
+  }
+
   renderElement() {
-    if (this.state.route === 'login') {
+    const { route, synopsis, rating, genre, fcc } = this.state;
+
+    if (route === 'login') {
       return <Login changeRoute = {this.changeRoute}/>
     }
-    else if (this.state.route === 'signup') {
+    else if (route === 'signup') {
       return <Signup changeRoute = {this.changeRoute}/>
     }
-    else if (this.state.route === 'home') {
-      return <Home changeRoute = {this.changeRoute}/>
+    else if (route === 'home') {
+      return <Home openShowPage = {this.openShowPage}/>
     }
     else {
-      return <TVShowPage title={this.state.route}/>;
+      return <TVShowPage 
+        title={route}
+        genre={genre}
+        rating={rating}
+        synopsis={synopsis}
+        fcc={fcc}
+        />;
     }
   }
 
   render() {
-    const { route } = this.state;
+    // const { route } = this.state;
 
     return (
       <div className="App">
