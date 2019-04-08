@@ -6,6 +6,7 @@ const Navigation = ({ changeRoute }) => {
         <nav className=''>
             <ul className='nav'>
                 <li className='start'><p onClick={() => changeRoute('home')} className='pointer dim'>TV Show List</p></li>
+                <li><p onClick={() => changeRoute('user')} className='mr4 pointer dim'>Profile</p></li>
                 <li><p onClick={() => changeRoute('login')} className='mr4 pointer dim'>Login</p></li>
                 <li><p onClick={() => changeRoute('signup')} className='mr3 pointer dim'>Sign Up</p></li>
             </ul>

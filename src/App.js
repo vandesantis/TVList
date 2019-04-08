@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import TVShowPage from './components/TVShowPage/TVShowPage';
+import UserProfile from './components/UserProfile/UserProfile';
 import './App.css';
 
 class App extends Component {
@@ -26,6 +27,10 @@ class App extends Component {
     this.setState({ route: route, synopsis: synopsis, rating: rating, genre: genre, fcc: fcc});
   }
 
+  openUserProfile  = (route, genre, rating, synopsis, fcc) => {
+    this.setState({ route: route, synopsis: synopsis, rating: rating, genre: genre, fcc: fcc});
+  }
+
   renderElement() {
     const { route, synopsis, rating, genre, fcc } = this.state;
 
@@ -37,6 +42,9 @@ class App extends Component {
     }
     else if (route === 'home') {
       return <Home openShowPage = {this.openShowPage}/>
+    }
+    else if (route === 'user') {
+      return <UserProfile openShowPage = {this.openShowPage}/>
     }
     else {
       return <TVShowPage 
