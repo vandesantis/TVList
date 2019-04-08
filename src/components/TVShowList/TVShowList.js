@@ -22,21 +22,23 @@ const exampleData = {
 }
 
 class TVShowList extends React.Component {
-    // constructor() {
-    //     super();
-    // }
-    tvShowArray = exampleData.data.map((tvShow, i) => {
-        return (
-            <TVShowEntry openShowPage={this.props.openShowPage}
-                title={tvShow.title}
-                genre={tvShow.genre}
-                rating={tvShow.rating}
-                synopsis={tvShow.synopsis}
-                fcc={tvShow.fcc}/>
-        )
-    });
-
     render() {
+        const filteredData = exampleData.data.filter((tvShow, i) => {
+            return tvShow.title.toLowerCase().includes(this.props.searchfield.toLowerCase());
+        });
+    
+        const tvShowArray = filteredData.map((tvShow, i) => {
+            return (
+                <TVShowEntry 
+                    openShowPage={this.props.openShowPage}
+                    title={tvShow.title}
+                    genre={tvShow.genre}
+                    rating={tvShow.rating}
+                    synopsis={tvShow.synopsis}
+                    fcc={tvShow.fcc}/>
+            )
+        });
+
         return (
             <table>
                 <tr class='table-header'>
@@ -44,7 +46,7 @@ class TVShowList extends React.Component {
                     <td>Genre</td>
                     <td>Rating</td>
                 </tr>
-                { this.tvShowArray }
+                { tvShowArray }
             </table>
         );
     }

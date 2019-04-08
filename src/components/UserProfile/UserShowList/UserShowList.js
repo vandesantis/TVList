@@ -35,6 +35,7 @@ class UserShowList extends React.Component {
     // constructor() {
     //     super();
     // }
+
     tvShowArray = exampleData.data.map((tvShow, i) => {
         return (
             <TVShowEntry openShowPage={this.props.openShowPage}
