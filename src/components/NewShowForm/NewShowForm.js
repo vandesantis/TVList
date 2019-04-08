@@ -10,7 +10,7 @@ class NewShowForm extends React.Component {
             title: '',
             synopsis: '',
             genre: '',
-            fcc
+            fcc: ''
         }
     }
 
