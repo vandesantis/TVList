@@ -7,11 +7,12 @@ class Home extends React.Component {
     // }
 
     render() {
-        let { openShowPage } = this.props;
+        let { openShowPage, changeRoute } = this.props;
         return (
             <div>
                 {/* <h1>TV Show List</h1> */}
                 <TVShowList openShowPage = {openShowPage}/>
+                <p onClick={() => changeRoute('newShowForm')} className='pointer dim'>Add show to database</p>
             </div>
         );
       }

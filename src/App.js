@@ -5,6 +5,7 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import TVShowPage from './components/TVShowPage/TVShowPage';
 import UserProfile from './components/UserProfile/UserProfile';
+import NewShowForm from './components/NewShowForm/NewShowForm';
 import './App.css';
 
 class App extends Component {
@@ -41,10 +42,13 @@ class App extends Component {
       return <Signup changeRoute = {this.changeRoute}/>
     }
     else if (route === 'home') {
-      return <Home openShowPage = {this.openShowPage}/>
+      return <Home openShowPage = {this.openShowPage} changeRoute = {this.changeRoute}/>
     }
     else if (route === 'user') {
       return <UserProfile openShowPage = {this.openShowPage}/>
+    }
+    else if (route === 'newShowForm') {
+      return <NewShowForm />
     }
     else {
       return <TVShowPage 
