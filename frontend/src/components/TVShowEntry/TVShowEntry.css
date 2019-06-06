@@ -10,6 +10,19 @@
     margin: 5px;
 }
 
+.addToList {
+    cursor: pointer;
+    display: inline;
+    margin: 5px;
+    opacity: 1;
+    transition: opacity .15s ease-in;
+}
+
+.addToList:hover {
+    opacity: .5;
+    transition: opacity .15s ease-in;
+}
+
 td {
     padding: 1em;
     outline: 1px solid black;

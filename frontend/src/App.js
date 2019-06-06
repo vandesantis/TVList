@@ -59,7 +59,7 @@ class App extends Component {
       return <UserProfile openShowPage = {this.openShowPage}/>
     }
     else if (route === 'newShowForm') {
-      return <NewShowForm />
+      return <NewShowForm changeRoute = {this.changeRoute}/>
     }
     else {
       return <TVShowPage 

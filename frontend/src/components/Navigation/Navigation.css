@@ -1,0 +1,18 @@
+.nav {
+    display: flex;
+    /* justify-content: flex-end; */
+    list-style: none;
+    margin: 0;
+    font-size: 1.5em;
+    color: white;
+    background-color: #0044ff;
+    /* outline: 1px solid black; */
+    /* flex-wrap: nowrap; */
+}
+li {
+
+}
+
+.start {
+   margin-right: auto;
+}

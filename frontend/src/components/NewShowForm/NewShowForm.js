@@ -23,7 +23,7 @@ class NewShowForm extends React.Component {
     }
 
     onGenreChange = (event) => {
-        this.setState({Genre: event.target.value});
+        this.setState({genre: event.target.value});
     }
 
     onFccChange = (event) => {
@@ -31,9 +31,9 @@ class NewShowForm extends React.Component {
     }
 
     updateDatabase = () => {
-        fetch('http://localhost:3000/submitform', {
+        fetch('http://localhost:3000/submitshow', {
             method: 'post',
-            headers: {'Content-TRype': 'application/json'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 title: this.state.title,
                 synopsis: this.state.synopsis,
@@ -42,43 +42,46 @@ class NewShowForm extends React.Component {
             })
         })
         .then(response => response.json())
+        .then(show => {})
+
+        this.props.changeRoute('home');
     }
 
     render() {
         return (
-            <form class="pa4 black-80">
-                <div class="measure center">
-                    <label for="title" class="f6 b db mb2">Title</label>
+            <div className="pa4 black-80">
+                <div className="measure center">
+                    <label htmlFor="title" className="f6 b db mb2">Title</label>
                     <input 
                         id="title" 
-                        class="input-reset ba b--black-20 pa2 mb2 db w-100 mb4" 
+                        className="input-reset ba b--black-20 pa2 mb2 db w-100 mb4" 
                         type="text"
                         onChange = {this.onTitleChange}
                         />
                 </div>
-                <div class="measure center">
-                    <label for="synopsis" class="f6 b db mb2">Synopsis</label>
+                <div className="measure center">
+                    <label htmlFor="synopsis" className="f6 b db mb2">Synopsis</label>
                     <input 
                         id="synopsis" 
-                        class="input-reset ba b--black-20 pa2 mb2 db w-100 mb4" 
+                        className="input-reset ba b--black-20 pa2 mb2 db w-100 mb4" 
                         type="text"
                         onChange = {this.onSynopsisChange}
                         />
                 </div>
-                <div class="measure center">
-                    <label for="genre" class="f6 b db mb2">Genre</label>
+                <div className="measure center">
+                    <label htmlFor="genre" className="f6 b db mb2">Genre</label>
                     <input 
                         id="genre" 
-                        class="input-reset ba b--black-20 pa2 mb2 db w-100 mb4" 
+                        className="input-reset ba b--black-20 pa2 mb2 db w-100 mb4" 
                         type="text"
                         onChange = {this.onGenreChange}
                         />
                 </div>
-                <div class="measure center">
-                    <label for="fcc" class="f6 b db mb2">FCC</label>
+                <div className="measure center">
+                    <label htmlFor="fcc" className="f6 b db mb2">FCC</label>
                     <input 
                         id="fcc" 
-                        class="input-reset ba b--black-20 pa2 mb2 db w-100 mb4"
+                        className="input-reset ba b--black-20 pa2 mb2 db w-100 mb4"
                          type="text"
                          onChange = {this.onFccChange}
                          />
@@ -90,7 +93,7 @@ class NewShowForm extends React.Component {
                         type="submit" 
                         value="Submit"/>
                 </div>
-            </form>
+            </div>
         );
       }
 }
