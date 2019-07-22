@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navigation.css';
 
 const Navigation = ({ changeRoute }) => {
@@ -8,7 +9,7 @@ const Navigation = ({ changeRoute }) => {
                 <li className='start'><p onClick={() => changeRoute('home')} className='pointer dim'>TV Show List</p></li>
                 <li><p onClick={() => changeRoute('user')} className='mr4 pointer dim'>Profile</p></li>
                 <li><p onClick={() => changeRoute('login')} className='mr4 pointer dim'>Login</p></li>
-                <li><p onClick={() => changeRoute('signup')} className='mr3 pointer dim'>Sign Up</p></li>
+                <li><p onClick={() => changeRoute('signup')} className='mr3 pointer dim'><Link to="/signup">Sign Up</Link></p></li>
             </ul>
 
 {/* 

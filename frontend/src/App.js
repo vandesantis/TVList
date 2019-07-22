@@ -7,6 +7,7 @@ import TVShowPage from './components/TVShowPage/TVShowPage';
 import UserProfile from './components/UserProfile/UserProfile';
 import NewShowForm from './components/NewShowForm/NewShowForm';
 import SearchBox from './components/SearchBox/SearchBox';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
