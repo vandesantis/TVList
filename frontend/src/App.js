@@ -10,17 +10,34 @@ import SearchBox from './components/SearchBox/SearchBox';
 import { Link } from 'react-router-dom';
 import './App.css';
 
+const initialState = {
+  route: 'home',
+  searchfield: '',
+  synopsis: '',
+  rating: '',
+  genre: '',
+  fcc: '',
+  isSignedIn: false,
+  user: {
+    id: '',
+    username: '',
+    email: '',
+    joined: ''
+  }
+}
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      route: 'home',
-      searchfield: '',
-      synopsis: '',
-      rating: '',
-      genre: '',
-      fcc: ''
-    }
+    this.state = initialState;
+  }
+
+  loadUser = (data) => {
+    this.setState({user: {
+      id: data.id,
+      username: data.username,
+      email: data.email,
+      joined: data.joined
+    }})
   }
 
   changeRoute = (route) => {
@@ -46,7 +63,7 @@ class App extends Component {
       return <Login changeRoute = {this.changeRoute}/>
     }
     else if (route === 'signup') {
-      return <Signup changeRoute = {this.changeRoute}/>
+      return <Signup loadUser = {this.loadUser} changeRoute = {this.changeRoute}/>
     }
     else if (route === 'home') {
       return (
