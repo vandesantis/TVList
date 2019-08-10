@@ -22,11 +22,19 @@ import './TVShowList.css';
 // }
 
 class TVShowList extends React.Component {
+
+    // _isMounted = false;
+
     constructor(props) {
         super(props);
         this.state = {
             shows: []
         }
+    }
+
+    componentDidMount() {
+        // this._isMounted = true;
+        this.getShows();
     }
 
     getShows = () => {
@@ -37,9 +45,15 @@ class TVShowList extends React.Component {
         })
         .then(response => response.json())
         .then(shows => {
-            this.setState({shows: shows}) 
+            // if (this._isMounted) {
+                this.setState({shows: shows}) 
+            // }
         })
     }
+
+    // componenetWillUnmount() {
+    //     this._isMounted = false;
+    // }
 
     render() {
         const { shows } = this.state;
@@ -48,7 +62,7 @@ class TVShowList extends React.Component {
             return shows.title.toLowerCase().includes(this.props.searchfield.toLowerCase());
         });
     
-        this.getShows();
+        // this.getShows();
         const tvShowArray = filteredData.map((show, i) => {
             return (
                 <TVShowEntry 
