@@ -61,6 +61,7 @@ class Signup extends React.Component {
                                 onChange={this.onUsernameChange}
                                 />
                             </div>
+
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                                 <input 
@@ -71,6 +72,7 @@ class Signup extends React.Component {
                                 onChange={this.onEmailChange}
                                 />
                             </div>
+                            
                             <div className="mv3">
                                 <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                                 <input 
