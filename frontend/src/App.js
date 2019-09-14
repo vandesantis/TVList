@@ -10,6 +10,7 @@ import SearchBox from './components/SearchBox/SearchBox';
 // import { Link } from 'react-router-dom';
 import './App.css';
 
+// Starting state of the App
 const initialState = {
   route: 'home',
   searchfield: '',
@@ -25,6 +26,7 @@ const initialState = {
     joined: ''
   }
 }
+
 class App extends Component {
   constructor() {
     super();
@@ -59,6 +61,7 @@ class App extends Component {
   renderElement() {
     const { route, synopsis, rating, genre, fcc, searchfield } = this.state;
 
+    // the route will decide which components show up on the page
     if (route === 'login') {
       return <Login changeRoute = {this.changeRoute}/>
     }
