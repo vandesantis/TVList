@@ -38,7 +38,7 @@ class TVShowList extends React.Component {
     }
 
     getShows = () => {
-        fetch('http://localhost:3000/homelist', {
+        fetch('http://localhost:3000/home', {
             method: 'get',
             headers: {'Content-Type': 'application/json'},
 
@@ -59,7 +59,7 @@ class TVShowList extends React.Component {
         const { shows } = this.state;
 
         const filteredData = shows.filter((shows, i) => {
-            return shows.title.toLowerCase().includes(this.props.searchfield.toLowerCase());
+            return shows.title.toLowerCase().includes(this.props.searchField.toLowerCase());
         });
     
         // this.getShows();

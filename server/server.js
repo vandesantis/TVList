@@ -34,7 +34,7 @@ app.get('/test', (req, res) => {
     res.send('test');
 })
 
-app.get('/homelist', (req, res) => {
+app.get('/home', (req, res) => {
     db.select('*').from('shows')
         .then(shows => {
             res.json(shows);

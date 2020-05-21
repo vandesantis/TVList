@@ -6,8 +6,9 @@ import Home from './components/Home';
 import TVShowPage from './components/TVShowPage/TVShowPage';
 import UserProfile from './components/UserProfile/UserProfile';
 import NewShowForm from './components/NewShowForm/NewShowForm';
-import SearchBox from './components/SearchBox/SearchBox';
+//import SearchBox from './components/SearchBox/SearchBox';
 // import { Link } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 // Starting state of the App
@@ -71,7 +72,7 @@ class App extends Component {
     else if (route === 'home') {
       return (
         <div>
-          <SearchBox search={this.onSearch}/>
+         {/* <SearchBox search={this.onSearch}/> */}
           <Home searchfield = {searchfield} openShowPage = {this.openShowPage} changeRoute = {this.changeRoute}/>
         </div>
       );
@@ -95,10 +96,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Navigation changeRoute = {this.changeRoute}/>
-        { this.renderElement() }
-      </div>
+      <Router>
+        <div className="App">
+          <Navigation changeRoute = {this.changeRoute}/>
+          {/* { this.renderElement() } */}
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component = {Signup} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
