@@ -4,6 +4,7 @@ import React from 'react';
 const TVShowPage = ({ title, genre, rating, synopsis, fcc }) => {
     return (
         <div>
+            {console.log({title})}
             <h1>{title}</h1>
             <p>genre: {genre}</p>
             <p>rating: {rating}</p>

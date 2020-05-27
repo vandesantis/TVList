@@ -1,5 +1,6 @@
 import React from 'react';
 import './TVShowEntry.css';
+import { Link } from 'react-router-dom';
 
 const TVShowEntry = ({ openShowPage, title, genre, rating, synopsis, fcc }) => {
     const checkNulls = () => {
@@ -23,7 +24,11 @@ const TVShowEntry = ({ openShowPage, title, genre, rating, synopsis, fcc }) => {
     checkNulls();
     return (
         <tr className='home-list'>
-            <td><p onClick={() => openShowPage(title, genre, rating, synopsis, fcc)} className='title dim'>{title}</p></td>
+            <td><p onClick={() => openShowPage(title, title, genre, rating, synopsis, fcc)} className='title dim'>
+                <Link to={"/show/" + title} className='title dim'>
+                    {title}
+                </Link>
+            </p></td>
             <td className='genre'>{genre}</td>
             <td className='rating'>{rating}</td>
             <td className=''>

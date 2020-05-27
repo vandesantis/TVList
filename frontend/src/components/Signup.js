@@ -36,7 +36,7 @@ class Signup extends React.Component {
         .then(user => {
             if (user.id) {
                 this.props.loadUser(user);
-                this.props.changeRoute('home');
+                // this.props.changeRoute('home');
             }
             else {
                 console.log("error adding user");

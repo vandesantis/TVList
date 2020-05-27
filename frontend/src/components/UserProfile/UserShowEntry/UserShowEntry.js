@@ -1,10 +1,15 @@
 import React from 'react';
 // import './TVShowEntry.css';
+import { Link } from 'react-router-dom';
 
 const UserShowEntry = ({ openShowPage, title, genre, watchingStatus, rating, synopsis, fcc }) => {
     return (
         <tr className='home-list'>
-            <td><p onClick={() => openShowPage(title, genre, rating, synopsis, fcc)} className='title dim'>{title}</p></td>
+            <td><p onClick={() => openShowPage(title, genre, rating, synopsis, fcc)} className='title dim'>
+                <Link to={"/show/" + title} className='title dim'>
+                    {title}
+                </Link>
+            </p></td>
             <td className='genre'>{genre}</td>
             <td className='watchingStatus'>{watchingStatus}</td>
             <td className='rating'>{rating}</td>

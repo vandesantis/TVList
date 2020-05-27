@@ -44,7 +44,7 @@ class NewShowForm extends React.Component {
         .then(response => response.json())
         .then(show => {})
 
-        this.props.changeRoute('home');
+        // this.props.changeRoute('home');
     }
 
     render() {

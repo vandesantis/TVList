@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
     render() {
@@ -39,7 +40,12 @@ class Login extends React.Component {
                                 value="Login"/>
                         </div>
                         <div className="lh-copy mt3">
-                            <p onClick={() => changeRoute('signup')} href="#0" className="f6 link dim black db pointer">Sign up</p>
+                            {/* <p onClick={() => changeRoute('signup')} href="#0" className=""> */}
+                            <p>
+                                <Link to="/signup" className="black f6 link dim pointer">
+                                    Sign Up
+                                </Link>
+                            </p>
                         </div>
                     </div>
                 </main>

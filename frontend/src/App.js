@@ -15,6 +15,7 @@ import './App.css';
 const initialState = {
   route: 'home',
   searchfield: '',
+  title: '',
   synopsis: '',
   rating: '',
   genre: '',
@@ -47,8 +48,8 @@ class App extends Component {
     this.setState({ route: route });
   }
 
-  openShowPage  = (route, genre, rating, synopsis, fcc) => {
-    this.setState({ route: route, synopsis: synopsis, rating: rating, genre: genre, fcc: fcc});
+  openShowPage  = (route, title, genre, rating, synopsis, fcc) => {
+    this.setState({ route: route, title: title, synopsis: synopsis, rating: rating, genre: genre, fcc: fcc});
   }
 
   openUserProfile  = (route, genre, rating, synopsis, fcc) => {
@@ -101,9 +102,18 @@ class App extends Component {
           <Navigation changeRoute = {this.changeRoute}/>
           {/* { this.renderElement() } */}
           <Switch>
-            <Route path="/home" component={Home} />
+            <Route path="/home" render={(props) => <Home {...props} openShowPage = {this.openShowPage}/>}/>
             <Route path="/login" component={Login} />
-            <Route path="/signup" component = {Signup} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/newShowForm" component={NewShowForm} />
+            <Route path={"/show/" + this.state.title} render = {(props) => <TVShowPage
+              title={this.state.title}
+              genre={this.state.genre}
+              rating={this.state.rating}
+              synopsis={this.state.synopsis}
+              fcc={this.state.fcc}/>}
+            />
+            <Route path="/profile" render={(props) => <UserProfile openShowPage = {this.openShowPage}/>}/>
           </Switch>
         </div>
       </Router>
