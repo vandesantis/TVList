@@ -6,6 +6,7 @@ const knex = require('knex');
 
 const signup = require('./controllers/signup');
 const profile = require('./controllers/profile');
+const login = require('./controllers/login');
 
 const db = knex({
     client: 'pg',
@@ -42,6 +43,7 @@ app.get('/home', (req, res) => {
         .catch(err => console.log(err))
 })
 
+
 app.post('/submitshow', (req, res) => {
     const { title, genre, synopsis, fcc } = req.body;
     console.log("title:", title);
@@ -59,6 +61,7 @@ app.post('/submitshow', (req, res) => {
 
 app.post('/signup', (req, res) => { signup.handleSignUp(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => {Image.handleImage(req, res, db)})
+app.post('/login', (req, res) => {login.handleLogin(req, res, db, bcrypt)})
 
 app.listen(3000, () => {
     console.log('app is running on port 3000');

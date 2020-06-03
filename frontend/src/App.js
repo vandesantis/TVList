@@ -35,13 +35,17 @@ class App extends Component {
     this.state = initialState;
   }
 
+  // loadUser = (data) => {
+  //   this.setState({user: {
+  //     id: data.id,
+  //     username: data.username,
+  //     email: data.email,
+  //     joined: data.joined
+  //   }})
+  // }
+
   loadUser = (data) => {
-    this.setState({user: {
-      id: data.id,
-      username: data.username,
-      email: data.email,
-      joined: data.joined
-    }})
+    this.setState({user: data});
   }
 
   changeRoute = (route) => {
@@ -63,6 +67,7 @@ class App extends Component {
   renderElement() {
     const { route, synopsis, rating, genre, fcc, searchfield } = this.state;
 
+    console.log(this.state.user);
     // the route will decide which components show up on the page
     if (route === 'login') {
       return <Login changeRoute = {this.changeRoute}/>
@@ -99,11 +104,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navigation changeRoute = {this.changeRoute}/>
+          <Navigation changeRoute = {this.changeRoute} user = {this.state.user}/>
           {/* { this.renderElement() } */}
           <Switch>
             <Route path="/home" render={(props) => <Home {...props} openShowPage = {this.openShowPage}/>}/>
-            <Route path="/login" component={Login} />
+            <Route path="/login" render={(props) => <Login {...props} loadUser={this.loadUser}/>}/>
             <Route path="/signup" component={Signup} />
             <Route path="/newShowForm" component={NewShowForm} />
             <Route path={"/show/" + this.state.title} render = {(props) => <TVShowPage
