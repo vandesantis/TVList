@@ -92,7 +92,6 @@ class TVShowList extends React.Component {
                         <td>Title</td>
                         <td>Genre</td>
                         <td>Rating</td>
-                        <td>Add to list</td>
                     </tr>
                     { tvShowArray }
                 </tbody>

@@ -31,9 +31,6 @@ const TVShowEntry = ({ openShowPage, title, genre, rating, synopsis, fcc }) => {
             </p></td>
             <td className='genre'>{genre}</td>
             <td className='rating'>{rating}</td>
-            <td className=''>
-                <p className='addToList'>Add to list</p>
-            </td>
             {/* print N/A if rating is null */}
             {/* {rating !== null ? (
                 <td className='rating'>{rating}</td>

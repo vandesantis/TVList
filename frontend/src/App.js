@@ -116,7 +116,8 @@ class App extends Component {
               genre={this.state.genre}
               rating={this.state.rating}
               synopsis={this.state.synopsis}
-              fcc={this.state.fcc}/>}
+              fcc={this.state.fcc}
+              user={this.state.user}/>}
             />
             <Route path="/profile" render={(props) => <UserProfile openShowPage = {this.openShowPage}/>}/>
           </Switch>
