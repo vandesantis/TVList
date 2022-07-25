@@ -8,7 +8,7 @@ import UserProfile from './components/UserProfile/UserProfile';
 import NewShowForm from './components/NewShowForm/NewShowForm';
 //import SearchBox from './components/SearchBox/SearchBox';
 // import { Link } from 'react-router-dom';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
 // Starting state of the App
@@ -49,6 +49,7 @@ class App extends Component {
   }
 
   changeRoute = (route) => {
+    console.log(this.state.route)
     this.setState({ route: route });
   }
 
@@ -64,41 +65,42 @@ class App extends Component {
     this.setState({ searchfield: event.target.value });
   }
 
-  renderElement() {
-    const { route, synopsis, rating, genre, fcc, searchfield } = this.state;
+  // I don't think this block is used anymore?
+  // renderElement() {
+  //   const { route, synopsis, rating, genre, fcc, searchfield } = this.state;
 
-    console.log(this.state.user);
-    // the route will decide which components show up on the page
-    if (route === 'login') {
-      return <Login changeRoute = {this.changeRoute}/>
-    }
-    else if (route === 'signup') {
-      return <Signup loadUser = {this.loadUser} changeRoute = {this.changeRoute}/>
-    }
-    else if (route === 'home') {
-      return (
-        <div>
-         {/* <SearchBox search={this.onSearch}/> */}
-          <Home searchfield = {searchfield} openShowPage = {this.openShowPage} changeRoute = {this.changeRoute}/>
-        </div>
-      );
-    }
-    else if (route === 'user') {
-      return <UserProfile openShowPage = {this.openShowPage}/>
-    }
-    else if (route === 'newShowForm') {
-      return <NewShowForm changeRoute = {this.changeRoute}/>
-    }
-    else {
-      return <TVShowPage 
-        title={route}
-        genre={genre}
-        rating={rating}
-        synopsis={synopsis}
-        fcc={fcc}
-        />;
-    }
-  }
+  //   console.log(this.state.user);
+  //   // the route will decide which components show up on the page
+  //   if (route === 'login') {
+  //     return <Login changeRoute = {this.changeRoute}/>
+  //   }
+  //   else if (route === 'signup') {
+  //     return <Signup loadUser = {this.loadUser} changeRoute = {this.changeRoute}/>
+  //   }
+  //   else if (route === 'home') {
+  //     return (
+  //       <div>
+  //        {/* <SearchBox search={this.onSearch}/> */}
+  //         <Home searchfield = {searchfield} openShowPage = {this.openShowPage} changeRoute = {this.changeRoute}/>
+  //       </div>
+  //     );
+  //   }
+  //   else if (route === 'user') {
+  //     return <UserProfile openShowPage = {this.openShowPage}/>
+  //   }
+  //   else if (route === 'newShowForm') {
+  //     return <NewShowForm changeRoute = {this.changeRoute}/>
+  //   }
+  //   else {
+  //     return <TVShowPage 
+  //       title={route}
+  //       genre={genre}
+  //       rating={rating}
+  //       synopsis={synopsis}
+  //       fcc={fcc}
+  //       />;
+  //   }
+  // }
 
   render() {
     return (
@@ -107,11 +109,12 @@ class App extends Component {
           <Navigation changeRoute = {this.changeRoute} user = {this.state.user}/>
           {/* { this.renderElement() } */}
           <Switch>
-            <Route path="/home" render={(props) => <Home {...props} openShowPage = {this.openShowPage}/>}/>
-            <Route path="/login" render={(props) => <Login {...props} loadUser={this.loadUser}/>}/>
-            <Route path="/signup" component={Signup} />
-            <Route path="/newShowForm" component={NewShowForm} />
-            <Route path={"/show/" + this.state.title} render = {(props) => <TVShowPage
+            <Route exact path="/" ><Redirect to="/home" /></Route>
+            <Route exact path="/home" render={(props) => <Home {...props} openShowPage = {this.openShowPage}/>}/>
+            <Route exact path="/login" render={(props) => <Login {...props} loadUser={this.loadUser}/>}/>
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/newShowForm" component={NewShowForm} />
+            <Route exact path={"/show/" + this.state.title} render = {(props) => <TVShowPage
               title={this.state.title}
               genre={this.state.genre}
               rating={this.state.rating}
@@ -119,7 +122,7 @@ class App extends Component {
               fcc={this.state.fcc}
               user={this.state.user}/>}
             />
-            <Route path="/profile" render={(props) => <UserProfile openShowPage = {this.openShowPage}/>}/>
+            <Route exact path="/profile" render={(props) => <UserProfile openShowPage = {this.openShowPage}/>}/>
           </Switch>
         </div>
       </Router>

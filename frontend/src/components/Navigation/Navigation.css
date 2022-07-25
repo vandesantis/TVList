@@ -1,16 +1,38 @@
 .nav {
     display: flex;
-    /* justify-content: flex-end; */
     list-style: none;
     margin: 0;
     font-size: 1.5em;
     color: white;
     background-color: #0044ff;
+
+}
     /* outline: 1px solid black; */
     /* flex-wrap: nowrap; */
+.logo {
+    margin-left: 1em;
 }
-li {
 
+.links {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+.nav-link {
+    margin-right: 1em;
+}
+
+.nav-link,
+.logo {
+    opacity: 1;
+    transition: opacity .15s ease-in;
+    
+}
+.nav-link:hover,
+.logo:hover {
+    opacity: .5;
+    transition: opacity .15s ease-in;
 }
 
 a {
@@ -19,5 +41,5 @@ a {
 }
 
 .start {
-   margin-right: auto;
+   /* margin-right: auto; */
 }

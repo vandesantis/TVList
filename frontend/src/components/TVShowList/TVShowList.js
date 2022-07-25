@@ -23,81 +23,81 @@ import './TVShowList.css';
 
 class TVShowList extends React.Component {
 
-    // _isMounted = false;
+  // _isMounted = false;
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            shows: []
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      shows: []
     }
+  }
 
-    componentDidMount() {
-        // this._isMounted = true;
-        this.getShows();
-    }
+  componentDidMount() {
+    // this._isMounted = true;
+    this.getShows();
+  }
 
-    getShows = () => {
-        fetch('http://localhost:3000/home', {
-            method: 'get',
-            headers: {'Content-Type': 'application/json'},
+  getShows = () => {
+    fetch('http://localhost:3000/home', {
+      method: 'get',
+      headers: {'Content-Type': 'application/json'},
 
-        })
-        .then(response => response.json())
-        .then(shows => {
-            // if (this._isMounted) {
-                this.setState({shows: shows}) 
-            // }
-        })
-    }
+    })
+    .then(response => response.json())
+    .then(shows => {
+      // if (this._isMounted) {
+        this.setState({shows: shows}) 
+      // }
+    })
+  }
 
-    // componenetWillUnmount() {
-    //     this._isMounted = false;
-    // }
+  // componenetWillUnmount() {
+  //     this._isMounted = false;
+  // }
 
-    render() {
-        const { shows } = this.state;
+  render() {
+    const { shows } = this.state;
 
-        const filteredData = shows.filter((shows, i) => {
-            return shows.title.toLowerCase().includes(this.props.searchField.toLowerCase());
-        });
-    
-        // this.getShows();
-        const tvShowArray = filteredData.map((show, i) => {
-            return (
-                <TVShowEntry 
-                    key={show.title}
-                    openShowPage={this.props.openShowPage}
-                    title={show.title}
-                    genre={show.genre}
-                    rating={show.rating}
-                    synopsis={show.synopsis}
-                    fcc={show.fcc}/>
+    const filteredData = shows.filter((shows, i) => {
+      return shows.title.toLowerCase().includes(this.props.searchField.toLowerCase());
+    });
 
-                // <TVShowEntry 
-                //     key={tvShow.title}
-                //     openShowPage={this.props.openShowPage}
-                //     title={tvShow.title}
-                //     genre={tvShow.genre}
-                //     rating={tvShow.rating}
-                //     synopsis={tvShow.synopsis}
-                //     fcc={tvShow.fcc}/>
-            )
-        });
+    // this.getShows();
+    const tvShowArray = filteredData.map((show, i) => {
+      return (
+        <TVShowEntry 
+          key={show.title}
+          openShowPage={this.props.openShowPage}
+          title={show.title}
+          genre={show.genre}
+          rating={show.rating}
+          synopsis={show.synopsis}
+          fcc={show.fcc}/>
 
-        return (
-            <table>
-                <tbody>
-                    <tr className='table-header'>
-                        <td>Title</td>
-                        <td>Genre</td>
-                        <td>Rating</td>
-                    </tr>
-                    { tvShowArray }
-                </tbody>
-            </table>
-        );
-    }
+        // <TVShowEntry 
+        //     key={tvShow.title}
+        //     openShowPage={this.props.openShowPage}
+        //     title={tvShow.title}
+        //     genre={tvShow.genre}
+        //     rating={tvShow.rating}
+        //     synopsis={tvShow.synopsis}
+        //     fcc={tvShow.fcc}/>
+      )
+    });
+
+    return (
+      <table>
+        <tbody>
+          <tr className='table-header'>
+            <td>Title</td>
+            <td>Genre</td>
+            <td>Rating</td>
+          </tr>
+          { tvShowArray }
+        </tbody>
+      </table>
+    );
+  }
 }
 
 export default TVShowList;
