@@ -49,7 +49,6 @@ class App extends Component {
   }
 
   changeRoute = (route) => {
-    console.log(this.state.route)
     this.setState({ route: route });
   }
 
@@ -106,7 +105,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navigation changeRoute = {this.changeRoute} user = {this.state.user}/>
+          <Navigation changeRoute = {this.changeRoute} user = {this.state.user} loadUser={this.loadUser}/>
           {/* { this.renderElement() } */}
           <Switch>
             <Route exact path="/" ><Redirect to="/home" /></Route>
