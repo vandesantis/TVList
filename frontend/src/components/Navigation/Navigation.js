@@ -4,10 +4,10 @@ import './Navigation.css';
 
 const Logo = ({ changeRoute }) => {
   return (
-    <div className='start'>
-      <p onClick={() => changeRoute('home')} className='logo'>
+    <div className=''>
+      <p onClick={() => changeRoute('home')}>
       
-        <Link to="/home">
+        <Link to="/home" className='logo'>
           TV Show List
         </Link>
       </p>
@@ -21,7 +21,7 @@ const DropDown = ({ loadUser }) => {
       <div className='dropdown-link'>
         Settings
       </div>
-      <Link to="/home" onClick={() => loadUser('')} className='dropdown-link'>
+      <Link to="/home" onClick={() => loadUser({user: ''})} className='dropdown-link'>
         Logout
       </Link>
     </div>
@@ -52,8 +52,8 @@ const Navigation = ({changeRoute, user, loadUser}) => {
     let userButton = null;
     if (user.id) {
       userButton = 
-        <div className='user-wrap user'>
-          <Link to="/profile" className=''>
+        <div className='user-wrap'>
+          <Link to="/profile" className='user'>
             {user.username}
           </Link>
           <DropDown loadUser={loadUser}/>
