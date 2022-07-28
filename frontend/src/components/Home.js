@@ -19,18 +19,11 @@ class Home extends React.Component {
     let { openShowPage } = this.props;
     return (
       <div>
-        {/* <h1>TV Show List</h1> */}
         <SearchBox search={this.onSearch} />
-        {/* { console.log(homeState.searchField) } */}
         <TVShowList searchField={this.state.searchField} openShowPage={openShowPage} />
-        {/* <p onClick={() => changeRoute('newShowForm')} className='pointer dim'> */}
-        {/* <p className='pointer dim'> */}
-        <p>
           <Link to="/newShowForm" className='pointer dim black'>
             Add show to database
           </Link>
-
-        </p>
       </div>
     );
   }
