@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -24,8 +24,8 @@ const App = () => {
     setRoute(route);
   }
 
-  const openShowPage  = (route, title, genre, rating, synopsis, fcc) => {
-    setShow({title, synopsis, rating, genre, fcc});
+  const openShowPage  = (show) => {
+    setShow(show);
   }
 
   return (
@@ -39,12 +39,14 @@ const App = () => {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/newShowForm" component={NewShowForm} />
           <Route exact path={"/show/" + show.title} render = {(props) => <TVShowPage
-            title={show.title}
-            genre={show.genre}
-            rating={show.rating}
-            synopsis={show.synopsis}
-            fcc={show.fcc}
-            user={user}/>}
+            // title={show.title}
+            // genre={show.genre}
+            // rating={show.rating}
+            // synopsis={show.synopsis}
+            // fcc={show.fcc}
+            // user={user}/>}
+            user={user}
+            show={show}/>}
           />
           <Route exact path="/profile" render={(props) => <UserProfile openShowPage = {openShowPage}/>}/>
         </Switch>

@@ -2,7 +2,14 @@ import React from 'react';
 import './TVShowEntry.css';
 import { Link } from 'react-router-dom';
 
-const TVShowEntry = ({ openShowPage, title, genre, rating, synopsis, fcc }) => {
+const TVShowEntry = ({ openShowPage, show }) => {
+  let {title, genre, rating, synopsis, fcc} = show;
+
+  // trying to condense the checkNulls function
+  // console.log(show)
+  // show = Object.keys(show).map((key) => (show[key] === null || show[key] === "") ? show[key]="N/A" :  show[key]);
+  // console.log(show)
+
   const checkNulls = () => {
     if (title === null || title === "") {
       title = "N/A";
@@ -24,19 +31,13 @@ const TVShowEntry = ({ openShowPage, title, genre, rating, synopsis, fcc }) => {
   checkNulls();
   return (
     <tr className='home-list'>
-      <td><p onClick={() => openShowPage(title, title, genre, rating, synopsis, fcc)} className='title dim'>
+      <td><p onClick={() => openShowPage(show)} className='title dim'>
         <Link to={"/show/" + title} className='title dim'>
           {title}
         </Link>
       </p></td>
       <td className='genre'>{genre}</td>
       <td className='rating'>{rating}</td>
-      {/* print N/A if rating is null */}
-      {/* {rating !== null ? (
-            <td className='rating'>{rating}</td>
-          ) : (
-            <td className='rating'>N/A</td>
-          )} */}
     </tr>
   );
 }

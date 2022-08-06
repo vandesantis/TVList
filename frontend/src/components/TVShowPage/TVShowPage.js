@@ -1,11 +1,11 @@
 import React from 'react';
 // import './TVShowPage.css';
 
-const LoggedOutView = ({ user, title, genre, rating, synopsis, fcc }) => {
+const LoggedOutView = ({ user, show }) => {
+  const {title, genre, rating, synopsis, fcc} = show;
   if (!user.id) {
     return (
       <div>
-        {console.log({ title })}
         <h1>{title}</h1>
         <p>genre: {genre}</p>
         <p>rating: {rating}</p>
@@ -17,11 +17,11 @@ const LoggedOutView = ({ user, title, genre, rating, synopsis, fcc }) => {
   return null
 }
 
-const LoggedInView = ({ user, title, genre, rating, synopsis, fcc }) => {
+const LoggedInView = ({ user, show }) => {
+  const {title, genre, rating, synopsis, fcc} = show;
   if (user.id) {
     return (
       <div>
-        {console.log({ title })}
         <h1>{title}</h1>
         <p>genre: {genre}</p>
         <p>rating: {rating}</p>
@@ -38,24 +38,17 @@ const LoggedInView = ({ user, title, genre, rating, synopsis, fcc }) => {
 
 class TVShowPage extends React.Component {
   render() {
-    const { user, title, genre, rating, synopsis, fcc } = this.props;
+    const { user } = this.props;
+    const { title, genre, rating, synopsis, fcc } = this.props.show;
     return (
       <div>
         <LoggedOutView
           user={user}
-          title={title}
-          genre={genre}
-          rating={rating}
-          synopsis={synopsis}
-          fcc={fcc} />
+          show={this.props.show} />
 
         <LoggedInView
           user={user}
-          title={title}
-          genre={genre}
-          rating={rating}
-          synopsis={synopsis}
-          fcc={fcc} />
+          show={this.props.show} />
       </div>
     );
   }

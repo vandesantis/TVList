@@ -21,9 +21,9 @@ class Home extends React.Component {
       <div>
         <SearchBox search={this.onSearch} />
         <TVShowList searchField={this.state.searchField} openShowPage={openShowPage} />
-          <Link to="/newShowForm" className='pointer dim black'>
-            Add show to database
-          </Link>
+        <Link to="/newShowForm" className='pointer dim black'>
+          Add show to database
+        </Link>
       </div>
     );
   }

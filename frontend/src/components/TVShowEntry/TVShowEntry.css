@@ -8,6 +8,7 @@
     cursor: pointer;
     display: inline;
     margin: 5px;
+    text-decoration: none;
 }
 
 .addToList {

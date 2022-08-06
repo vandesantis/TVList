@@ -2,28 +2,8 @@ import React from 'react';
 import TVShowEntry from '../TVShowEntry/TVShowEntry';
 import './TVShowList.css';
 
-// const exampleData = {
-//     data: [
-//         {
-//             title: "game of thrones",
-//             genre: "action",
-//             rating: "N/A",
-//             synopsis: "dragons and stuff",
-//             fcc: "TV-MA"
-//         },
-//         {
-//             title: "Breaking bad",
-//             genre: "action",
-//             rating: "N/A",
-//             synopsis: "meth",
-//             fcc: "TV-MA"
-//         }
-//     ]
-// }
 
 class TVShowList extends React.Component {
-
-  // _isMounted = false;
 
   constructor(props) {
     super(props);
@@ -33,7 +13,6 @@ class TVShowList extends React.Component {
   }
 
   componentDidMount() {
-    // this._isMounted = true;
     this.getShows();
   }
 
@@ -45,15 +24,9 @@ class TVShowList extends React.Component {
     })
     .then(response => response.json())
     .then(shows => {
-      // if (this._isMounted) {
         this.setState({shows: shows}) 
-      // }
     })
   }
-
-  // componenetWillUnmount() {
-  //     this._isMounted = false;
-  // }
 
   render() {
     const { shows } = this.state;
@@ -62,26 +35,13 @@ class TVShowList extends React.Component {
       return shows.title.toLowerCase().includes(this.props.searchField.toLowerCase());
     });
 
-    // this.getShows();
     const tvShowArray = filteredData.map((show, i) => {
       return (
         <TVShowEntry 
           key={show.title}
           openShowPage={this.props.openShowPage}
-          title={show.title}
-          genre={show.genre}
-          rating={show.rating}
-          synopsis={show.synopsis}
-          fcc={show.fcc}/>
-
-        // <TVShowEntry 
-        //     key={tvShow.title}
-        //     openShowPage={this.props.openShowPage}
-        //     title={tvShow.title}
-        //     genre={tvShow.genre}
-        //     rating={tvShow.rating}
-        //     synopsis={tvShow.synopsis}
-        //     fcc={tvShow.fcc}/>
+          show={show}
+          />
       )
     });
 
