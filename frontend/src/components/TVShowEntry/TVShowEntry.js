@@ -2,33 +2,16 @@ import React from 'react';
 import './TVShowEntry.css';
 import { Link } from 'react-router-dom';
 
-const TVShowEntry = ({ openShowPage, show }) => {
-  let {title, genre, rating, synopsis, fcc} = show;
-
-  // trying to condense the checkNulls function
-  // console.log(show)
-  // show = Object.keys(show).map((key) => (show[key] === null || show[key] === "") ? show[key]="N/A" :  show[key]);
-  // console.log(show)
-
-  const checkNulls = () => {
-    if (title === null || title === "") {
-      title = "N/A";
-    }
-    if (genre === null || genre === "") {
-      genre = "N/A";
-    }
-    if (rating === null || rating === "") {
-      rating = "N/A";
-    }
-    if (synopsis === null || synopsis === "") {
-      synopsis = "N/A";
-    }
-    if (fcc === null || fcc === "") {
-      fcc = "N/A";
-    }
+const ColumnEntry = ({ type, name }) => {
+  if (name === null || name === "") {
+    name = "N/A"
   }
+  return <td className={type}>{name}</td>
+}
 
-  checkNulls();
+const TVShowEntry = ({ openShowPage, show }) => {
+  let {title, genre, rating} = show;
+
   return (
     <tr className='home-list'>
       <td><p onClick={() => openShowPage(show)} className='title dim'>
@@ -36,8 +19,8 @@ const TVShowEntry = ({ openShowPage, show }) => {
           {title}
         </Link>
       </p></td>
-      <td className='genre'>{genre}</td>
-      <td className='rating'>{rating}</td>
+      <ColumnEntry type='genre' name={genre}/>
+      <ColumnEntry type='rating' name={rating} />
     </tr>
   );
 }
