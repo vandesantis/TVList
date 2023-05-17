@@ -9,60 +9,68 @@ const profile = require('./controllers/profile');
 const login = require('./controllers/login');
 
 const db = knex({
-    client: 'pg',
-    connection: {
-        host : '127.0.0.1',
-        user: 'postgres',
-        password : '',
-        database : 'newtvshowlist'
-    }
+  client: 'pg',
+  connection: {
+    host: '127.0.0.1',
+    user: 'postgres',
+    password: '',
+    database: 'newtvshowlist',
+  },
 });
 
-db.select('*').from('users').then(data => {
+db.select('*')
+  .from('users')
+  .then((data) => {
     console.log(data);
-});
+  });
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json()); // changed from bodyParser
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.send(database.users);
-})
+  res.send(database.users);
+});
 
 app.get('/test', (req, res) => {
-    res.send('test');
-})
+  res.send('test');
+});
 
 app.get('/home', (req, res) => {
-    db.select('*').from('shows')
-        .then(shows => {
-            res.json(shows);
-        })
-        .catch(err => console.log(err))
-})
-
+  db.select('*')
+    .from('shows')
+    .then((shows) => {
+      res.json(shows);
+    })
+    .catch((err) => console.log(err));
+});
 
 app.post('/submitshow', (req, res) => {
-    const { title, genre, synopsis, fcc } = req.body;
-    console.log("title:", title);
+  const { title, genre, synopsis, fcc } = req.body;
+  console.log('title:', title);
 
-    db('shows')
+  db('shows')
     .insert({
-        title: title,
-        genre: genre,
-        synopsis: synopsis,
-        fcc: fcc
+      title: title,
+      genre: genre,
+      synopsis: synopsis,
+      fcc: fcc,
     })
-    .then(show => {})
-    .catch(err => res.status(400).json('unable to add show'));
-})
+    .then((show) => {})
+    .catch((err) => res.status(400).json('unable to add show'));
+});
 
-app.post('/signup', (req, res) => { signup.handleSignUp(req, res, db, bcrypt) })
-app.get('/profile/:id', (req, res) => {Image.handleImage(req, res, db)})
-app.post('/login', (req, res) => {login.handleLogin(req, res, db, bcrypt)})
+app.post('/signup', (req, res) => {
+  signup.handleSignUp(req, res, db, bcrypt);
+});
+app.get('/profile/:id', (req, res) => {
+  Image.handleImage(req, res, db);
+});
+app.post('/login', (req, res) => {
+  login.handleLogin(req, res, db, bcrypt);
+});
 
 app.listen(3000, () => {
-    console.log('app is running on port 3000');
+  console.log('app is running on port 3000');
 });
